@@ -7,20 +7,19 @@
 Needed:
 1. async processing
 2. queues / background workers
-3. database state
-4. API design
-5. architecture thinking
+3. database state (task CRUD)
+4. REST API design
+5. user registration/login (auth JWT, Roles, departments)
+6. Error handling
+7. Filtering
+8. Pagination
+9. Basic reporting endpoints
 
 Minimum stack
 
 C# + ASP.NET Core
-PostgreSQL
 Docker
 BackgroundService worker
-OpenAPI
-
-Example tasks:
-1. document conversion
-2. report generation
-3. email sending
-4. data parsing
+OpenAPI (Swashbuckle.AspNetCore)
+DB: Microsoft.EntityFrameworkCore.Sqlite
+Auth: Microsoft.AspNetCore.Authentication.JwtBearer
