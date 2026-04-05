@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore TaskManager.sln
     - name: Build
       run: dotnet build --no-restore
     - name: Test
