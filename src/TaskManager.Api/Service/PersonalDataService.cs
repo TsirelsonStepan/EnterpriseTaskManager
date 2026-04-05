@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using TaskManager.Api.Domain;
+using TaskManager.Api.DTO;
 using TaskManager.Api.Repository;
 
 namespace TaskManager.Api.Service;

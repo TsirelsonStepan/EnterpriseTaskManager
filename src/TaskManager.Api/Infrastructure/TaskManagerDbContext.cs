@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-using TaskManager.Api.Domain;
+using TaskManager.Api.DTO;
 
 namespace TaskManager.Api.Infrastructure;
 
