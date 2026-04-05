@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace TaskManager.Api.Domain;
+using TaskManager.Api.Domain;
+
+namespace TaskManager.Api.DTO;
 
 [Index(nameof(Name), IsUnique=true)]
 public class UserEntity
