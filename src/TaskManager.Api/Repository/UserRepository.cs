@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 
+using TaskManager.Api.DTO;
 using TaskManager.Api.Domain;
 using TaskManager.Api.Infrastructure;
 using TaskManager.Api.Exception;

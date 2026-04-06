@@ -1,8 +1,10 @@
-using TaskManager.Api.Domain;
-using TaskManager.Api.Repository;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System;
+
+using TaskManager.Api.Domain;
+using TaskManager.Api.DTO;
+using TaskManager.Api.Repository;
 
 namespace TaskManager.Api.Service;
 

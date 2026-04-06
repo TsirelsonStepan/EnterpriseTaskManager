@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
 using TaskManager.Api.DTO;
-using TaskManager.Api.DTO.Request;
 using TaskManager.Api.Service;
 
 namespace TaskManager.Api.Controller;
