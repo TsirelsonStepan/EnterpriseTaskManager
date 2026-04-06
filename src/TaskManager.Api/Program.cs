@@ -1,5 +1,7 @@
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -79,5 +81,11 @@ if (app.Environment.IsDevelopment())
     app.MapSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGet("/", (HttpContext context) =>
+{
+    context.Response.Redirect("/swagger/index.html", permanent: true);
+    return Task.CompletedTask;
+});
 
 app.Run();
