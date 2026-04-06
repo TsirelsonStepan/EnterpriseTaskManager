@@ -1,5 +1,7 @@
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,6 +68,12 @@ builder.Services.AddDbContext<TaskManagerDbContext>(options => options.UseSqlite
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<TaskManagerDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
@@ -79,5 +87,11 @@ if (app.Environment.IsDevelopment())
     app.MapSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGet("/", (HttpContext context) =>
+{
+    context.Response.Redirect("/swagger/index.html", permanent: true);
+    return Task.CompletedTask;
+});
 
 app.Run();
