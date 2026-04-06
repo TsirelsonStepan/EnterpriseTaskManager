@@ -68,6 +68,12 @@ builder.Services.AddDbContext<TaskManagerDbContext>(options => options.UseSqlite
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<TaskManagerDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
