@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TaskManager.Api.DTO;
+namespace TaskManager.Api.Domain.Dto;
 
-public class LoginRequest
+public class RegisterRequest
 {
     [Required]
     public required string Username { get; init; }

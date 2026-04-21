@@ -10,7 +10,6 @@ using Microsoft.IdentityModel.Tokens;
 
 using TaskManager.Api.Exception;
 using TaskManager.Api.Infrastructure;
-using TaskManager.Api.Repository;
 using TaskManager.Api.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,9 +44,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<TasksService>();
 builder.Services.AddScoped<JwtService>();
-builder.Services.AddScoped<PersonalDataService>();
-builder.Services.AddScoped<UserRepository>();
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>()!;

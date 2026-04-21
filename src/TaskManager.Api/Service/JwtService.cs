@@ -1,15 +1,21 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
+using System;
 using System.Text;
-using Microsoft.Extensions.Options;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
 
-using TaskManager.Api.Domain;
+using TaskManager.Api.Domain.Model;
 using TaskManager.Api.Infrastructure;
 
 namespace TaskManager.Api.Service;
 
-public class JwtService
+public interface IJwtService
+{
+    public string GenerateJwt(UserModel userModel);
+}
+
+public class JwtService : IJwtService
 {
     private readonly JwtSettings _settings;
 
@@ -18,12 +24,7 @@ public class JwtService
         _settings = options.Value;
     }
 
-    public string IssueJwt(User user)
-    {
-        return GenerateJwt(user.Name);
-    }
-
-    private string GenerateJwt(string username)
+    public string GenerateJwt(UserModel userModel)
     {
         SecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.SecretKey));
         SigningCredentials creds = new(key, SecurityAlgorithms.HmacSha256);
@@ -32,7 +33,8 @@ public class JwtService
 
         var claims = new[]
         {
-            new Claim(ClaimTypes.NameIdentifier, username)
+            new Claim(ClaimTypes.Name, userModel.UserName),
+            new Claim(ClaimTypes.NameIdentifier, userModel.UserGuid ?? throw new NullReferenceException("User isn't registered in DB and doesn't have Guid"))
         };
 
         var token = new JwtSecurityToken(

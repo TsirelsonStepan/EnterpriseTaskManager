@@ -1,4 +1,4 @@
-namespace TaskManager.Api.DTO;
+namespace TaskManager.Api.Domain.Dto;
 
 public class JwtResponse
 {
