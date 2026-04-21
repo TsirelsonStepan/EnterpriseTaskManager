@@ -27,12 +27,12 @@ public class ExceptionMiddleware
                 error = "Unauthorized"
             });
         }
-        catch (UserNotFoundException e)
+        catch (EntityNotFoundException e)
         {
             context.Response.StatusCode = 404;
             await context.Response.WriteAsJsonAsync(new
             {
-                error = $"User with name {e.Username} not found."
+                error = e.Message
             });
         }
     }

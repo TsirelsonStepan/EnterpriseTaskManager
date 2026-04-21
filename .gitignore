@@ -487,3 +487,4 @@ Properties/
 .editorconfig
 src/TaskManager.Api/.DB
 src/TaskManager.Api/appsettings.Development.json
+Documentation/TODO.md
