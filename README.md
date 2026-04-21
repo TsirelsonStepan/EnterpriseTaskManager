@@ -10,4 +10,8 @@ docker compose up taskmanagerapi
 
 ## Documentation
 
-![File structure](Documentation/FileStructure.drawio.svg)
+### File Structure
+![File structure](Documentation/FileStructure.drawio.png)
+
+### Classes
+![Classes](Documentation/Classes.drawio.png)
